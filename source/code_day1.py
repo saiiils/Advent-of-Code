@@ -1,3 +1,6 @@
+# Advent of Code
+# Day 01/25
+
 firstDigit = 0
 lastDigit = 0
 sumVals = 0
@@ -30,5 +33,5 @@ for line in data:
     firstDigit = 0
     lastDigit = 0
     print("NEW LINE")
-    
+
 print(sumVals)
