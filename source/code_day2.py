@@ -88,7 +88,6 @@ def partTwo():
                         minBlue = cubeNum
                         # print("new blue minium found: ", minBlue)
         # print("min set: ", minRed, minGreen, minBlue)
-        print("\n\n")
         power = power + (minRed * minGreen * minBlue)
     print("power: ", power)
 
