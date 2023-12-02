@@ -41,14 +41,13 @@ def textToNum(text):
 for line in data:
     # for every line in the text file
     # print(line)
-    if (firstDigit == 0):
-        firstNum = re.search('one|two|three|four|five|six|seven|eight|nine|1|2|3|4|5|6|7|8|9', line).group()
-        if (firstNum.isdigit()):
-            firstDigit = int(firstNum)
-            print("first digit aquired via digit: ", firstDigit)
-        elif (not firstNum.isdigit()):
-            firstDigit = textToNum(re.search('one|two|three|four|five|six|seven|eight|nine', firstNum).group())
-            print("first digit aquired via word: ", firstDigit)
+    firstNum = re.search('one|two|three|four|five|six|seven|eight|nine|1|2|3|4|5|6|7|8|9', line).group()
+    if (firstNum.isdigit()):
+        firstDigit = int(firstNum)
+        print("first digit aquired via digit: ", firstDigit)
+    elif (not firstNum.isdigit()):
+        firstDigit = textToNum(re.search('one|two|three|four|five|six|seven|eight|nine', firstNum).group())
+        print("first digit aquired via word: ", firstDigit)
 
     revLine = line[::-1]
     # print(revLine)
@@ -71,4 +70,4 @@ for line in data:
     firstDigit = 0
     lastDigit = 0
 
-print("grand total: ", sumVals)
+print("sum of values: ", sumVals)

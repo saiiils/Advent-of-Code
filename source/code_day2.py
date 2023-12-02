@@ -53,7 +53,7 @@ def partOne():
         if gameValid:
             sumID = sumID + gameID
             # print("this game is valid, the ID has been added to the sum...")
-        print("sum of IDs: ", sumID)
+    print("sum of IDs: ", sumID)
 
 def partTwo():
     power = 0
