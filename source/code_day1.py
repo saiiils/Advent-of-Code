@@ -1,15 +1,15 @@
-# Advent of Code
-# Day 01/25
+# Advent of Code 2023
+# Day 1: Trebuchet?!
 
 import re
-
-firstDigit = 0
-lastDigit = 0
-sumVals = 0
 
 file = open("inputs/input_day1.txt", "r")
 data = file.readlines()
 file.close()
+
+firstDigit = 0
+lastDigit = 0
+sumVals = 0
 
 # if first char is digit, store it, else check for substring, continue
 
