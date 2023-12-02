@@ -39,35 +39,39 @@ def textToNum(text):
         return 9
 
 for line in data:
+    # reset digits
+    firstDigit = 0
+    lastDigit = 0
+
     # for every line in the text file
+    # grab first digit
     # print(line)
     firstNum = re.search('one|two|three|four|five|six|seven|eight|nine|1|2|3|4|5|6|7|8|9', line).group()
     if (firstNum.isdigit()):
         firstDigit = int(firstNum)
-        print("first digit aquired via digit: ", firstDigit)
+        # print("first digit aquired via digit: ", firstDigit)
     elif (not firstNum.isdigit()):
         firstDigit = textToNum(re.search('one|two|three|four|five|six|seven|eight|nine', firstNum).group())
-        print("first digit aquired via word: ", firstDigit)
+        # print("first digit aquired via word: ", firstDigit)
 
+    #grab last digit
     revLine = line[::-1]
     # print(revLine)
     lastNum = re.search('eno|owt|eerht|ruof|evif|xis|neves|thgie|enin|1|2|3|4|5|6|7|8|9', revLine).group()
     if (lastNum.isdigit()):
         lastDigit = int(lastNum)
-        print("last digit aquired via digit: ", lastDigit)
+        # print("last digit aquired via digit: ", lastDigit)
     elif (not lastNum.isdigit()):
         lastDigit = textToNum(re.search('eno|owt|eerht|ruof|evif|xis|neves|thgie|enin', lastNum).group()[::-1])
-        print("last digit aquired via word: ", lastDigit)
+        # print("last digit aquired via word: ", lastDigit)
     elif(lastDigit == 0):
         lastDigit = firstDigit
-        print("only one digit found: ", firstDigit, lastDigit)
+        # print("only one digit found: ", firstDigit, lastDigit)
 
     sumVals = sumVals + digitCombiner(firstDigit, lastDigit)
     # print("digits: ", firstDigit, lastDigit)
     # print("number: ", digitCombiner(firstDigit, lastDigit))
     # print("total: ", sumVals)
     # print("\n")
-    firstDigit = 0
-    lastDigit = 0
 
 print("sum of values: ", sumVals)
