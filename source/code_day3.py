@@ -36,11 +36,8 @@ def partOne():
             # if lineIndex > 1: break
             # get coordinates of all adjacent cells. +2 on right because range is exclusive on right
             partNum = int(numMatch.group())
-            print(partNum)
             yAdj = list(range(lineIndex - 1, lineIndex + 2))
-            print(yAdj)
             xAdj = list(range(numMatch.start() - 1, numMatch.end() + 1))
-            print(xAdj)
             numStart = numMatch.start()
             numEnd = numMatch.end() - 1
 
@@ -51,18 +48,21 @@ def partOne():
             adjChars = [
                 engineSchematic[y][x]
                 for y, x in adjCoords
-                if y in range(0, yMax) and x in range(0, xMax)
+                if y in range(0, yMax) and x in range(0, xMax - 1)
                 and (y != lineIndex or x not in range(numStart, numEnd + 1))
             ]
-            # print(adjChars)
 
             # check if adjacent characters are not digit or dot
             if any(c for c in adjChars if c not in ".0123456789"):
-                print("valid part")
                 sumPartNums = sumPartNums + partNum
 
+            print(partNum)
+            print(yAdj)
+            print(xAdj)
+            print(adjChars)
+            print(sumPartNums)
             print('\n\n')
 
-    print(sumPartNums)
+    print("Total: ", sumPartNums)
 
 partOne()
