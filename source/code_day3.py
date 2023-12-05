@@ -15,18 +15,15 @@ file = open("inputs/input_day3", "r")
 input = file.readlines()
 file.close()
 
+engineSchematic = [line for line in input if line]
+
+# strange, but start with y
+yMax = len(engineSchematic)     # y length of the schematic, aka number of lines in engine schematic
+xMax = len(engineSchematic[0])  # x length of the schematic, aka number of elemnts in a line of the engine schematic
+
 def partOne():
 
     sumPartNums = 0
-
-    # create 2d list of all characters in data
-    engineSchematic = [line for line in input if line]
-
-    # strange, but start with y
-    yMax = len(engineSchematic)     # y length of the schematic, aka number of lines in engine schematic
-    xMax = len(engineSchematic[0])  # x length of the schematic, aka number of elemnts in a line of the engine schematic
-
-    # stores number object from match
 
     # for each line
     for lineIndex, line in enumerate(engineSchematic):
@@ -66,3 +63,34 @@ def partOne():
     print("Total: ", sumPartNums)
 
 partOne()
+    
+def partTwo():
+
+    sumGearRatios = 0
+
+    # go thru each line and char in engineSchematic
+    for lineIndex, line in enumerate(engineSchematic):
+
+        # find each gear (aka star)
+        for gear in re.finditer(r'\*', engineSchematic[lineIndex]):
+
+            # parts list for each gear
+            adjParts = []
+
+            # search adjacent lines
+            for adjLineIndex in [-1, 0, 1]:
+
+                # check to make sure we don't go out of bounds
+                if (lineIndex + adjLineIndex) in range(0, yMax):
+                    for partNum in re.finditer(r'\d+', engineSchematic[lineIndex + adjLineIndex]):
+                        # checks if the part is adjacent to the gear
+                        if gear.start() in range(partNum.start() - 1, partNum.end() + 1):
+                            adjParts.append(int(partNum.group()))
+            
+            # if exactly two parts are found, add to gear ratio sum
+            if len(adjParts) == 2:
+                sumGearRatios = sumGearRatios + (adjParts[0] * adjParts[1])
+    
+    print(sumGearRatios)
+
+partTwo()
