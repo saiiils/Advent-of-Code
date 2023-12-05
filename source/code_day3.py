@@ -53,12 +53,12 @@ def partOne():
             if any(c for c in adjChars if c not in ".0123456789"):
                 sumPartNums = sumPartNums + partNum
 
-            print(partNum)
-            print(yAdj)
-            print(xAdj)
-            print(adjChars)
-            print(sumPartNums)
-            print('\n\n')
+            # print(partNum)
+            # print(yAdj)
+            # print(xAdj)
+            # print(adjChars)
+            # print(sumPartNums)
+            # print('\n\n')
 
     print("Total: ", sumPartNums)
 
