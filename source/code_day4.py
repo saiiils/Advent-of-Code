@@ -26,7 +26,7 @@ def partOne():
         for winNum in winningNumbers:
             if winNum in playerNumbers:
                 # print("match found: ", winNum)
-                cardMatches = cardMatches + 1
+                cardMatches += 1
 
         # if cardMatches == 0:
             # print("no matches?")
@@ -100,20 +100,21 @@ def partTwo():
         playerNumbers = re.findall(r'\d+', line.split(':')[1].split('|')[1])
 
         cardTotal = 0
-
         cardMatches = 0
         cardPoints = 0
 
         for winNum in winningNumbers:
             if winNum in playerNumbers:
-                cardMatches = cardMatches + 1
+                cardMatches += 1
 
         if cardMatches > 0:
             cardPoints = pow(2, cardMatches - 1)
 
-        for i in range(0,cardCopies[index]):
-            # print(cardCopies[index])
-            cardTotal += cardPoints
+        cardTotal = cardPoints * cardCopies[index]
+
+        # for i in range(cardCopies[index]):
+        #     # print(cardCopies[index])
+        #     cardTotal += cardPoints
         
         print(
             "Card: ", cardNumber,
@@ -122,6 +123,7 @@ def partTwo():
             " Points: ", cardPoints,
             " Total: ", cardTotal
             )
+        
         sumPoints += cardTotal
         
     print(sumPoints)
