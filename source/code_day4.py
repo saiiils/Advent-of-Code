@@ -36,7 +36,7 @@ def partOne():
             # print(cardMatches)
             # print(cardPoints)
         
-        sumPoints = sumPoints + cardPoints
+        sumPoints += cardPoints
         # print("Current total: ", sumPoints)
         # print('\n\n')
         
@@ -47,16 +47,13 @@ def partOne():
 def partTwo():
 
     # how many copies of each card do i have
-    cardCopies = []
     maxCards = len(data)
-    for i in range(maxCards):
-        cardCopies.append(1)
-    # all cards will have at least one original copy
+    cardCopies = [1] * maxCards
     # cardCopies[0] = 1
 
     for index, line in enumerate(data):
 
-        # if index > 3: break
+        # if index > 10: break
 
         cardData = line.split(':')
         cardNumber = int(re.search(r'\d+', cardData[0]).group())
@@ -72,20 +69,27 @@ def partTwo():
 
         # for number of copies for current card
         for i in range(cardCopies[index]):
-            
             if cardMatches > 0:
                 for matches in range(cardMatches):
                     if (cardNumber + matches < maxCards):
                         # print("adding one to card ", cardNumber + matches + 1, " ... ", matches + 1, " of ", cardMatches)
                         cardCopies[cardNumber + matches] += 1
+                    else:
+                        # print("card overflow", cardNumber)
+                        # input("Press enter to contiue...")
+                        break
+            else:
+                # print("no matches")
+                # input("Press enter to contiue...")
+                break
 
-        print(
-            "Card: ", cardNumber,
-            "Copies: ", cardCopies[index],
-            "Matches: ", cardMatches
-            )
-        print(cardCopies)
-        print('\n')
+        # print(
+        #     "Card: ", cardNumber,
+        #     "Copies: ", cardCopies[index],
+        #     "Matches: ", cardMatches
+        #     )
+        # print(cardCopies)
+        # print('\n')
 
         # input("Press enter to continue...")
 
@@ -96,8 +100,8 @@ def partTwo():
         cardData = line.split(':')
         cardNumber = int(re.search(r'\d+', cardData[0]).group())
 
-        winningNumbers = re.findall(r'\d+', line.split(':')[1].split('|')[0])
-        playerNumbers = re.findall(r'\d+', line.split(':')[1].split('|')[1])
+        winningNumbers = re.findall(r'\d+', cardData[1].split('|')[0])
+        playerNumbers = re.findall(r'\d+', cardData[1].split('|')[1])
 
         cardTotal = 0
         cardMatches = 0
@@ -115,7 +119,7 @@ def partTwo():
         # for i in range(cardCopies[index]):
         #     # print(cardCopies[index])
         #     cardTotal += cardPoints
-        
+
         print(
             "Card: ", cardNumber,
             " Copies: ", cardCopies[index],
@@ -123,6 +127,8 @@ def partTwo():
             " Points: ", cardPoints,
             " Total: ", cardTotal
             )
+        # print(cardCopies)
+        # print('\n\n')
         
         sumPoints += cardTotal
         
