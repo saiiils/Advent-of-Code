@@ -12,10 +12,10 @@ import re
 from itertools import product
 
 file = open("inputs/input_day3", "r")
-input = file.readlines()
+data = file.readlines()
 file.close()
 
-engineSchematic = [line for line in input if line]
+engineSchematic = [line for line in data if line]
 
 # strange, but start with y
 yMax = len(engineSchematic)     # y length of the schematic, aka number of lines in engine schematic
