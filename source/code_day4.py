@@ -42,8 +42,6 @@ def partOne():
         
     print(sumPoints)
 
-# partOne()
-
 def partTwo():
 
     # how many copies of each card do i have
@@ -68,30 +66,19 @@ def partTwo():
                 cardMatches += 1
 
         # for number of copies for current card
-        for i in range(cardCopies[index]):
-            if cardMatches > 0:
-                for matches in range(cardMatches):
-                    if (cardNumber + matches < maxCards):
+        # print(index, cardNumber, cardMatches, cardCopies[index])
+        if cardMatches > 0:
+            for i in range(cardCopies[index]):
+                for j in range(cardMatches):
+                    if (cardNumber + j <= maxCards):
                         # print("adding one to card ", cardNumber + matches + 1, " ... ", matches + 1, " of ", cardMatches)
-                        cardCopies[cardNumber + matches] += 1
+                        cardCopies[index + j] += 1
+                        # if cardNumber == 193:
+                        #     print("card ", cardNumber, index, cardCopies[index], i, j)
+                        #     print(cardCopies[index])
                     else:
-                        # print("card overflow", cardNumber)
-                        # input("Press enter to contiue...")
+                        # print("card ", cardNumber, " reached")
                         break
-            else:
-                # print("no matches")
-                # input("Press enter to contiue...")
-                break
-
-        # print(
-        #     "Card: ", cardNumber,
-        #     "Copies: ", cardCopies[index],
-        #     "Matches: ", cardMatches
-        #     )
-        # print(cardCopies)
-        # print('\n')
-
-        # input("Press enter to continue...")
 
     sumPoints = 0
 
@@ -116,17 +103,13 @@ def partTwo():
 
         cardTotal = cardPoints * cardCopies[index]
 
-        # for i in range(cardCopies[index]):
-        #     # print(cardCopies[index])
-        #     cardTotal += cardPoints
-
-        print(
-            "Card: ", cardNumber,
-            " Copies: ", cardCopies[index],
-            " Matches: ", cardMatches,
-            " Points: ", cardPoints,
-            " Total: ", cardTotal
-            )
+        # print(
+        #     "Card: ", cardNumber,
+        #     " Copies: ", cardCopies[index],
+        #     " Matches: ", cardMatches,
+        #     " Points: ", cardPoints,
+        #     " Total: ", cardTotal
+        #     )
         # print(cardCopies)
         # print('\n\n')
         
@@ -134,4 +117,5 @@ def partTwo():
         
     print(sumPoints)
 
+# partOne()
 partTwo()
