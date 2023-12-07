@@ -48,7 +48,9 @@ def partTwo():
     maxCards = len(data)
     cardCopies = [1] * maxCards
     # cardCopies[0] = 1
+    sumPoints = 0
 
+    # count up how many copies of each card
     for index, line in enumerate(data):
 
         # if index > 10: break
@@ -66,56 +68,22 @@ def partTwo():
                 cardMatches += 1
 
         # for number of copies for current card
-        # print(index, cardNumber, cardMatches, cardCopies[index])
         if cardMatches > 0:
             for i in range(cardCopies[index]):
                 for j in range(cardMatches):
-                    if (cardNumber + j <= maxCards):
-                        # print("adding one to card ", cardNumber + matches + 1, " ... ", matches + 1, " of ", cardMatches)
-                        cardCopies[index + j] += 1
-                        # if cardNumber == 193:
-                        #     print("card ", cardNumber, index, cardCopies[index], i, j)
-                        #     print(cardCopies[index])
+                    if (cardNumber + j < maxCards):
+                        cardCopies[cardNumber + j] += 1
                     else:
                         # print("card ", cardNumber, " reached")
                         break
 
-    sumPoints = 0
-
-    for index, line in enumerate(data):
-
-        cardData = line.split(':')
-        cardNumber = int(re.search(r'\d+', cardData[0]).group())
-
-        winningNumbers = re.findall(r'\d+', cardData[1].split('|')[0])
-        playerNumbers = re.findall(r'\d+', cardData[1].split('|')[1])
-
-        cardTotal = 0
-        cardMatches = 0
-        cardPoints = 0
-
-        for winNum in winningNumbers:
-            if winNum in playerNumbers:
-                cardMatches += 1
-
-        if cardMatches > 0:
-            cardPoints = pow(2, cardMatches - 1)
-
-        cardTotal = cardPoints * cardCopies[index]
-
-        # print(
-        #     "Card: ", cardNumber,
-        #     " Copies: ", cardCopies[index],
-        #     " Matches: ", cardMatches,
-        #     " Points: ", cardPoints,
-        #     " Total: ", cardTotal
-        #     )
-        # print(cardCopies)
-        # print('\n\n')
+        print(
+            "Card: ", cardNumber,
+            " Copies: ", cardCopies[index],
+            " Matches: ", cardMatches
+        )
         
-        sumPoints += cardTotal
-        
-    print(sumPoints)
+    print(sum(cardCopies))
 
 # partOne()
 partTwo()
