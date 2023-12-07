@@ -47,7 +47,6 @@ def partTwo():
     # how many copies of each card do i have
     maxCards = len(data)
     cardCopies = [1] * maxCards
-    # cardCopies[0] = 1
     sumPoints = 0
 
     # count up how many copies of each card
