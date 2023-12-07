@@ -53,7 +53,7 @@ def partTwo():
     # count up how many copies of each card
     for index, line in enumerate(data):
 
-        # if index > 10: break
+        # if index > 20: break
 
         cardData = line.split(':')
         cardNumber = int(re.search(r'\d+', cardData[0]).group())
@@ -72,16 +72,18 @@ def partTwo():
             for i in range(cardCopies[index]):
                 for j in range(cardMatches):
                     if (cardNumber + j < maxCards):
+                        # if cardNumber == 193:
+                        #     print("adding a copy to: ", cardNumber + j + 1, cardCopies[cardNumber + j])
                         cardCopies[cardNumber + j] += 1
+                        # break
                     else:
-                        # print("card ", cardNumber, " reached")
                         break
 
-        print(
-            "Card: ", cardNumber,
-            " Copies: ", cardCopies[index],
-            " Matches: ", cardMatches
-        )
+        # print(
+        #     "Card: ", cardNumber,
+        #     " Copies: ", cardCopies[index],
+        #     " Matches: ", cardMatches
+        # )
         
     print(sum(cardCopies))
 
