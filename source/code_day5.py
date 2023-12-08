@@ -15,6 +15,7 @@ file.close()
 # 5: light to temp
 # 6: temp to humid
 # 7: humid to loc
+# https://github.com/Fadi88/AoC/blob/master/2023/day05/code.py
 
 def partOne():
 
@@ -38,9 +39,5 @@ def partOne():
         # ends up with: ['seed', 'soil'], ['soil', 'fertilizer'], etc.
         mapType = tuple(mapData[0].split()[0].split("-to-"))
         mapMappings[mapType] = []
-
-        for line in mapData[1:]:
-            mapMappings[mapType].append(list(map(int,line.split())))
-
 
 partOne()
