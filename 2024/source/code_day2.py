@@ -11,14 +11,14 @@ file.close()
 safeReports = 0
 
 def checkOrder(nums):
-    sortNums = nums[:]
-    sortNums.sort()
-    revSortNums = sortNums[::-1]
+    # sortNums = nums[:]
+    # sortNums.sort()
+    # revSortNums = sortNums[::-1]
 
-    if nums == sortNums:
+    if all(nums[i] <= nums[i + 1] for i in range(len(nums) - 1)):
         # print("forward: ", nums)
         return True
-    elif nums == revSortNums:
+    elif all(nums[i] >= nums[i + 1] for i in range(len(nums) - 1)):
         # print("reverse: ", nums)
         return True
     else:
