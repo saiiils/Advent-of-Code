@@ -60,6 +60,8 @@ def problemDampener(sublist):
     for sub in sublist:
         if checkSafety(sub):
             return True
+            break
+    return False
 
 for line in data:
     numbers = [int(word) for word in line.split() if word.isdigit()]
