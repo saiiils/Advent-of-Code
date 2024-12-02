@@ -35,10 +35,9 @@ def checkDiff(nums):
             # print(i)
             safety = True
         else:
+            # print("bad diffs: ", diffs)
             safety = False
             break
-    # if not safety:
-    #     print("bad diffs: ", diffs)
 
     return safety
 
