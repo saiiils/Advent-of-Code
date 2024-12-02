@@ -4,7 +4,7 @@
 import re
 import numpy
 
-file = open("inputs/input_day2", "r")
+file = open("2024/inputs/input_day2", "r")
 data = file.readlines()
 file.close()
 

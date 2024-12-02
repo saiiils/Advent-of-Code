@@ -3,7 +3,7 @@
 
 import re
 
-file = open("inputs/input_day1", "r")
+file = open("2024/inputs/input_day1", "r")
 data = file.readlines()
 file.close()
 
