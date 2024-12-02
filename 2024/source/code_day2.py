@@ -56,19 +56,16 @@ def sublists(nums):
 def checkSafety(nums):
     return checkOrder(nums) and checkDiff(nums)
 
-def problemDampener(subLists):
-    print("hello")
+def problemDampener(sublist):
+    for sub in sublist:
+        if checkSafety(sub):
+            return True
 
 for line in data:
     numbers = [int(word) for word in line.split() if word.isdigit()]
     sublist = sublists(numbers)
 
-    subSafety = False
-    for sub in sublist:
-        if checkSafety(sub):
-            subSafety = True
-
-    if checkSafety(numbers) or subSafety:
+    if checkSafety(numbers) or problemDampener(sublist):
         # print("safe report")
         safeReports += 1
     # else:
