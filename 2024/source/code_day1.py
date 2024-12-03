@@ -1,8 +1,6 @@
 # Advent of Code 2024
 # Day 1: Historian Hysteria
 
-import re
-
 file = open("2024/inputs/input_day1", "r")
 data = file.readlines()
 file.close()

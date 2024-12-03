@@ -1,7 +1,6 @@
 # Advent of Code 2024
 # Day 2: Red-Nosed Reports
 
-import re
 import numpy
 
 file = open("2024/inputs/input_day2", "r")
