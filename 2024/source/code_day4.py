@@ -78,7 +78,6 @@ def wordSearch(grid, word):
 
 print(wordSearch(data, "XMAS"))
 
-# part two done.
 def masSearch(grid):
 
     count = 0
@@ -89,12 +88,14 @@ def masSearch(grid):
     diagOne = [(-1, -1), (1, 1)]                # UL, DR diagonal
     diagTwo = [(-1, 1), (1, -1)]                # UR, DL diagonal
 
+    directions = [[(-1, -1), (1,1)], [(-1, 1), (1, -1)]]
+
     # if M found, opposite diag should be S and vice versa
 
     for i in range(yLen):
         for j in range(xLen):
             if grid[i][j] == 'A':
-                print("A matched: ", i, " ", j)
+                # print("A matched: ", i, " ", j)
                 diagOneValid = False
                 diagTwoValid = False
                 mChar = False
@@ -110,8 +111,6 @@ def masSearch(grid):
                             sChar = True
                         else:
                             # print("invalid diag")
-                            mChar = False
-                            sChar = False
                             diagOneValid = False
                             break
                     else:
@@ -132,8 +131,6 @@ def masSearch(grid):
                             sChar = True
                         else:
                             # print("invalid diag")
-                            mChar = False
-                            sChar = False
                             diagTwoValid = False
                             break
                     else:
@@ -144,8 +141,6 @@ def masSearch(grid):
                 if diagOneValid and diagTwoValid:
                     # print("XMAS!")
                     count += 1
-                # print("\n")
-
     return count
 
 print(masSearch(data))
